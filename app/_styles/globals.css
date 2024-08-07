@@ -151,12 +151,12 @@ body.dark .link:hover {
   }
 }
 
-.MuiTableCell-root,
-.MuiTableCell-root {
+.css-hwnex-MuiTableCell-root,
+.css-6yn4jt-MuiTableCell-root {
   border-bottom: 1px solid rgba(3, 102, 214, 0.3) !important;
 }
 
-.MuiTypography-root {
+.css-xu7mdg-MuiTypography-root {
   font-size: 17px !important;
 }
 
@@ -192,8 +192,8 @@ body.dark .MuiAutocomplete-listbox {
   background-color: rgba(9, 14, 16, 1) !important;
 }
 
-body.dark .MuiTypography-root,
-body.dark .MuiTypography-root {
+body.dark .css-1vw6mcs-MuiTypography-root,
+body.dark .css-ahj2mt-MuiTypography-root {
   color: #fff;
 }
 
