@@ -101,6 +101,22 @@ function SearchSuggestion({
       return;
     }
 
+    console.log(newItem.pantryName);
+    console.log(state.productList);
+
+    let filter;
+
+    if (state.productList.length > 0) {
+      filter = state.productList.some(
+        (option) => option.name == newItem.pantryName
+      );
+    }
+
+    if (!filter) {
+      toast.error("Pantry name does not exist");
+      return;
+    }
+
     setErrors({});
     setSearchLoading(true);
 
@@ -118,12 +134,7 @@ function SearchSuggestion({
 
       const data = await response.json();
 
-      if (typeof data.content === "string") {
-        const parsedContent = JSON.parse(data.content);
-        await handleSaveRecipe(parsedContent);
-      } else {
-        await handleSaveRecipe(data.content.name);
-      }
+      await handleSaveRecipe(data.content);
     } catch (error) {
       toast.error(error.message);
     } finally {

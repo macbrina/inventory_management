@@ -32,7 +32,9 @@ function RecipeList({ user, userLoading }) {
     fetchRecipes();
   }, [user, dispatch, updateRecipeList, memoizedRecipeListLength]);
 
-  if (userLoading || state.recipeLoading) return <SkeletonTableLoader />;
+  if (userLoading || state.recipeLoading) return;
+  <SkeletonTableLoader />;
+
   return (
     <Grid
       item

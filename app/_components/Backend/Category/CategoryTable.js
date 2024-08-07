@@ -1,6 +1,10 @@
+import { useInventory } from "@/app/_context/InventoryContext";
+import {
+  fetchProductsByCategoryId,
+  removeCategory,
+} from "@/app/_lib/data-service";
 import {
   Avatar,
-  Box,
   Button,
   Dialog,
   DialogActions,
@@ -17,23 +21,19 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import Title from "../../Title";
-import { useInventory } from "@/app/_context/InventoryContext";
 import { useState } from "react";
-import EditSvg from "../../Icons/EditSvg";
-import DeleteSvg from "../../Icons/DeleteSvg";
-import {
-  fetchProductsByCategoryId,
-  removeCategory,
-} from "@/app/_lib/data-service";
 import { toast } from "react-toastify";
+import DeleteSvg from "../../Icons/DeleteSvg";
+import EditSvg from "../../Icons/EditSvg";
 import CategoryUpdateDialog from "./CategoryUpdateDialog";
 
 function CategoryTable({ items, user }) {
   const { state } = useInventory();
-  const filteredItems = items.filter((item) =>
-    item.name.toLowerCase().includes(state.categorySearch.toLowerCase())
-  );
+  const filteredItems = items
+    .filter((item) =>
+      item.name.toLowerCase().includes(state.categorySearch.toLowerCase())
+    )
+    .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   const [loading, setLoading] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);

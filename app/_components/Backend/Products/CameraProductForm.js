@@ -425,7 +425,7 @@ function CameraProductForm({ cameraUpload, toggleCameraForm }) {
           {processing && (
             <Stack direction="row" spacing={1}>
               <Typography variant="body1">PROCESSING...</Typography>
-              <CircularProgress color="inherit" size={40} />
+              <CircularProgress color="inherit" size={20} />
             </Stack>
           )}
         </Stack>

@@ -188,6 +188,16 @@ body.dark .apexcharts-legend-text {
   color: #fff !important;
 }
 
+body.dark .apexcharts-tooltip {
+  background: #333 !important;
+  color: #fff !important;
+}
+
+body.dark .apexcharts-tooltip .apexcharts-tooltip-title {
+  background: #333 !important;
+  color: #fff !important;
+}
+
 body.dark .MuiAutocomplete-listbox {
   background-color: rgba(9, 14, 16, 1) !important;
 }
