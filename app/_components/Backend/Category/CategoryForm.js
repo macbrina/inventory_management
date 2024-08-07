@@ -19,6 +19,7 @@ import {
 import { useInventory } from "@/app/_context/InventoryContext";
 import { toast } from "react-toastify";
 import { generateUniqueId } from "@/app/_util/utilities";
+import { format } from "date-fns";
 
 function CategoryForm() {
   const [newItem, setNewItem] = useState({
@@ -72,12 +73,16 @@ function CategoryForm() {
 
     try {
       const imageUrl = await uploadImage(newItem.image);
+      const createdAt = newItem.id
+        ? newItem.createdAt
+        : format(new Date(), "yyyy-MM-dd");
 
       const itemData = {
         userId: user.uid,
         ...newItem,
         image: imageUrl,
         id: newItem.id || generateUniqueId(),
+        createdAt,
       };
 
       await addOrUpdateCategoryInFirestore(itemData, user, updateCategoryList);
@@ -93,7 +98,7 @@ function CategoryForm() {
       toggleForm();
       toast.success("Category added successfully.");
     } catch (error) {
-      toast.error("Failed to add category. Please try again.");
+      toast.error(`Failed to add category. Please try again. ${error.message}`);
     } finally {
       setLoading(false);
     }

@@ -118,6 +118,9 @@ function CategoryTable({ items, user }) {
               <Typography variant="h6">Description</Typography>
             </TableCell>
             <TableCell>
+              <Typography variant="h6">Created Date</Typography>
+            </TableCell>
+            <TableCell>
               <Typography variant="h6">Action</Typography>
             </TableCell>
           </TableRow>
@@ -158,6 +161,11 @@ function CategoryTable({ items, user }) {
                   <TableCell>
                     <Typography variant="body1" sx={{ fontSize: "16px" }}>
                       {item.description}
+                    </Typography>
+                  </TableCell>
+                  <TableCell>
+                    <Typography variant="body1" sx={{ fontSize: "16px" }}>
+                      {item.createdAt}
                     </Typography>
                   </TableCell>
                   <TableCell>

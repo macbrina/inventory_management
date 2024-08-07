@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { InventoryProvider } from "./_context/InventoryContext";
+import NextTopLoader from "nextjs-toploader";
 
 import { Josefin_Sans } from "next/font/google";
 
@@ -28,6 +29,7 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <html lang="en">
         <body className={josefin.className}>
+          <NextTopLoader showSpinner={false} />
           <ToastContainer />
           <InventoryProvider>{children}</InventoryProvider>
         </body>

@@ -108,13 +108,16 @@ function ProductForm({ normalUpload, toggleNormalForm }) {
 
     try {
       const imageUrl = await uploadImage(newItem.image);
+      const createdAt = newItem.id
+        ? newItem.createdAt
+        : format(new Date(), "yyyy-MM-dd");
 
       const itemData = {
         userId: user.uid,
         ...newItem,
         image: imageUrl,
         id: newItem.id || generateUniqueId(),
-        createdAt: format(new Date(), "yyyy-MM-dd"),
+        createdAt,
       };
 
       await addOrUpdateItemInFirestore(
