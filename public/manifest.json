@@ -1,0 +1,26 @@
+{
+  "theme_color": "#ffffff",
+  "background_color": "#ffffff",
+  "icons": [
+    {
+      "purpose": "maskable",
+      "sizes": "512x512",
+      "src": "/images/icon512_maskable.png",
+      "type": "image/png"
+    },
+    {
+      "purpose": "any",
+      "sizes": "512x512",
+      "src": "/images/icon512_rounded.png",
+      "type": "image/png"
+    }
+  ],
+  "orientation": "portrait",
+  "display": "standalone",
+  "dir": "auto",
+  "lang": "en-GB",
+  "name": "StockSmart",
+  "short_name": "StockSmart",
+  "start_url": "/",
+  "description": "Keep your pantry organized and your meals planned with ease.Streamline your kitchen inventory and never run out of essentials again"
+}

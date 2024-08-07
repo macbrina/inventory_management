@@ -1,36 +1,93 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# StockSmart
 
-## Getting Started
+## Table of Contents
 
-First, run the development server:
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+  - [Clone the Repository](#clone-the-repository)
+  - [Install Dependencies](#install-dependencies)
+- [Scripts](#scripts)
+- [Configuration](#configuration)
+- [Packages Used](#packages-used)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+
+## Overview
+
+StockSmart is a modern inventory management system built using Next.js and various libraries. The application includes a range of features to help manage pantry items, suggest recipes based on available ingredients, and provide a comprehensive dashboard for analytics. It supports dark/light modes and integrates social authentication for easy sign-up and login.
+
+## Features
+
+- **AI Recipe Suggestions**: Get personalized recipe suggestions based on pantry items with interactive video tutorials.
+- **Pantry Management**: Efficiently manage pantry items—add, edit, and delete ingredients.
+- **Dashboard Analytics**: Access comprehensive analytics on pantry usage and recipe preferences.
+- **Dark/Light Mode**: Toggle between light and dark themes for better user experience.
+- **Social Authentication**: Sign in or sign up using Google or GitHub accounts.
+
+## Installation
+
+To get started with the project, clone the repository and install the required dependencies.
+
+### Clone the Repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/macbrina/inventory_management.git
+cd inventory_management
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Install Dependencies
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```bash
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Scripts
 
-## Learn More
+Here are the available scripts you can use:
 
-To learn more about Next.js, take a look at the following resources:
+- dev: Starts the development server.
+- build: Builds the project for production.
+- start: Starts the production server.
+- lint: Lints the project files.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Configuration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The project uses environment variables for configuration. Create a .env.local file in the root directory and add the following variables:
 
-## Deploy on Vercel
+```bash
+NEXT_PUBLIC_FIREBASE_API_KEY=your-firebase-api-key
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=your-firebase-auth-domain
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=your-firebase-project-id
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=your-firebase-storage-bucket
+NEXT_PUBLIC_FIREBASE_MESSENGER_SENDER_ID=your-firebase-messaging-sender-id
+NEXT_PUBLIC_FIREBASE_APP_ID=your-firebase-app-id
+NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID=your-measurement-id
+OPENAI_API_KEY=your-openai-api-key
+YOUTUBE_API_KEY=your-youtube-key
+NODE_ENV=your-node-env
+NEXT_PUBLIC_URL=your-web-url
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Packages Used
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- Next.js: The React framework used for building the application.
+- MUI (Material-UI): A popular React UI framework for building user interfaces.
+- Firebase: Provides authentication and real-time database features.
+- OpenAI: For AI-driven recipe suggestions.
+- ApexCharts: For displaying charts and analytics.
+- React Player: For embedding video tutorials.
+- React Toastify: For showing notifications.
+
+## Contributing
+
+Contributions are welcome! Please fork the repository and create a pull request with your changes.
+
+## License
+
+This project is licensed under the MIT [License](LICENSE).
+
+## Contact
+
+For any questions or feedback, please reach out to preciousmbaekwe@gmail.com.
