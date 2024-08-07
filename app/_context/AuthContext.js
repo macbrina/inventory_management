@@ -4,6 +4,7 @@ import { onAuthStateChanged } from "@/app/_lib/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserByUID } from "../_lib/data-service";
 import { usePathname, useRouter } from "next/navigation";
+import Cookies from "js-cookie";
 
 const AuthContext = createContext();
 
@@ -21,24 +22,14 @@ export function AuthProvider({ children }) {
           setUser(loggedUser.data);
         } else {
           setUser(null);
-          await fetch("/api/auth/logout", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
+          Cookies.remove("auth_token", { path: "/" });
           if (pathname.startsWith("/account")) {
             router.push("/login");
           }
         }
       } else {
         setUser(null);
-        await fetch("/api/auth/logout", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-        });
+        Cookies.remove("auth_token", { path: "/" });
         if (pathname.startsWith("/account")) {
           router.push("/login");
         }

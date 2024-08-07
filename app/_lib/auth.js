@@ -16,6 +16,7 @@ import {
   checkUserExistsByEmail,
   addUser,
 } from "@/app/_lib/data-service";
+import Cookies from "js-cookie";
 
 export function onAuthStateChanged(cb) {
   return _onAuthStateChanged(auth, cb);
@@ -79,7 +80,10 @@ export async function signInSystem({ email, password, rememberMe }) {
     const user = userCredential.user;
     const token = await user.getIdToken();
 
-    await setAuthCookie(token);
+    Cookies.set("auth_token", token, {
+      expires: rememberMe ? 7 : undefined,
+      path: "/",
+    });
   } catch (error) {
     throw error;
   }
@@ -122,12 +126,14 @@ export async function logOut() {
   try {
     await auth.signOut();
 
-    await fetch("/api/auth/logout", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    Cookies.remove("auth_token", { path: "/" });
+
+    // await fetch("/api/auth/logout", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    // });
 
     window.location.href = "/";
   } catch (error) {
