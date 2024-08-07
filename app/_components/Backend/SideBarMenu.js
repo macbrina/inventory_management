@@ -1,4 +1,5 @@
 import {
+  Avatar,
   Divider,
   IconButton,
   List,
@@ -30,13 +31,11 @@ function SideBarMenu({ toggleDrawer }) {
             spacing={1}
             sx={{ mr: 4, alignItems: "center" }}
           >
-            <Image
-              src={logo}
-              quality={80}
+            <Avatar
+              src="/images/logo.png"
               alt="StoreSmart Logo"
-              width={30}
-              height={30}
-            />{" "}
+              sx={{ width: 30, height: 30 }}
+            />
             <Typography variant="h6" color="text.primary" fontWeight="bold">
               StoreSmart
             </Typography>

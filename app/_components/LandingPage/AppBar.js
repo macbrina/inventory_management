@@ -18,7 +18,7 @@ import ToggleColorMode from "@/app/_components/ToggleColorMode";
 
 import logo from "@/public/images/logo.png";
 import Image from "next/image";
-import { Stack } from "@mui/material";
+import { Avatar, Stack } from "@mui/material";
 import Link from "next/link";
 
 const logoStyle = {
@@ -102,13 +102,11 @@ function AppAppBar({ userLoading, user }) {
               }}
             >
               <Stack direction="row" spacing={1}>
-                <Image
-                  src={logo}
-                  quality={80}
+                <Avatar
+                  src="/images/logo.png"
                   alt="StoreSmart Logo"
-                  width={30}
-                  height={30}
-                />{" "}
+                  sx={{ width: 30, height: 30 }}
+                />
                 <Typography variant="h6" color="text.primary" fontWeight="bold">
                   StoreSmart
                 </Typography>

@@ -2,7 +2,7 @@
 
 import ToggleColorMode from "@/app/_components/ToggleColorMode";
 import MenuIcon from "@mui/icons-material/Menu";
-import { IconButton, Stack, Toolbar, Typography } from "@mui/material";
+import { Avatar, IconButton, Stack, Toolbar, Typography } from "@mui/material";
 import AvatarDropdown from "./AvatarDropdown";
 import { useInventory } from "@/app/_context/InventoryContext";
 import Image from "next/image";
@@ -21,13 +21,11 @@ function Header({ toggleDrawer, open }) {
       {!state.drawerOpen && (
         <Stack direction="row" spacing={1} sx={{ mr: 4 }}>
           <Link href="/account/dashboard">
-            <Image
-              src={logo}
-              quality={80}
+            <Avatar
+              src="/images/logo.png"
               alt="StoreSmart Logo"
-              width={30}
-              height={30}
-            />{" "}
+              sx={{ width: 30, height: 30 }}
+            />
           </Link>
         </Stack>
       )}

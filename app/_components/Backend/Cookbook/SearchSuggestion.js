@@ -100,10 +100,7 @@ function SearchSuggestion({
     if (!validateSearchEntries()) {
       return;
     }
-
-    console.log(newItem.pantryName);
-    console.log(state.productList);
-
+    
     let filter;
 
     if (state.productList.length > 0) {

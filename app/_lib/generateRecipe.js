@@ -70,7 +70,6 @@ export default async function generateRecipe(
         throw new Error("Invalid JSON response");
       }
     } catch (error) {
-      console.log(`Attempt ${attempt + 1} failed: `, error);
       if (attempt === retries - 1) {
         console.log("All attempts failed. Returning an empty object.");
         return {};

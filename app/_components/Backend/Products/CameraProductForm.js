@@ -23,6 +23,7 @@ import {
   Search as SearchIcon,
 } from "@mui/icons-material";
 import {
+  Avatar,
   Box,
   Button,
   CircularProgress,
@@ -404,22 +405,16 @@ function CameraProductForm({ cameraUpload, toggleCameraForm }) {
           {showCapturedImage && !showCamera && (
             <>
               <Typography variant="h6">Captured Image</Typography>
-              <Box
+              <Avatar
+                src={base64Image}
+                alt="Taken Photo"
                 sx={{
-                  maxWidth: "100%",
-                  height: "200px",
-                  overflow: "hidden",
-                  position: "relative",
-                  aspectRatio: "1/1",
+                  width: 200,
+                  height: 200,
+                  objectFit: "cover",
+                  borderRadius: "50%",
                 }}
-              >
-                <Image
-                  src={base64Image}
-                  alt="Taken Photo"
-                  fill
-                  objectFit="cover"
-                />
-              </Box>
+              />
             </>
           )}
           {processing && (

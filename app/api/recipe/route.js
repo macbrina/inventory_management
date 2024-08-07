@@ -13,7 +13,6 @@ export async function POST(req) {
       },
     });
   } catch (error) {
-    console.log("Recipe Error Api: ", error);
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
       headers: {
