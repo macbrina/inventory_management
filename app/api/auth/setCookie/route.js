@@ -5,8 +5,7 @@ export async function POST(request) {
   const { token } = await request.json();
 
   try {
-    // Set the session cookie
-    const expiresIn = 60 * 60 * 24; // One day
+    const expiresIn = 60 * 60 * 24;
     const options = {
       maxAge: expiresIn,
       httpOnly: true,
