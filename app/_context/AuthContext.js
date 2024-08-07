@@ -3,7 +3,7 @@
 import { onAuthStateChanged } from "@/app/_lib/auth";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserByUID } from "../_lib/data-service";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(async (authUser) => {
@@ -26,7 +27,9 @@ export function AuthProvider({ children }) {
               "Content-Type": "application/json",
             },
           });
-          router.push("/login");
+          if (pathname.startsWith("/account")) {
+            router.push("/login");
+          }
         }
       } else {
         setUser(null);
@@ -36,7 +39,9 @@ export function AuthProvider({ children }) {
             "Content-Type": "application/json",
           },
         });
-        router.push("/login");
+        if (pathname.startsWith("/account")) {
+          router.push("/login");
+        }
       }
       setLoading(false);
     });
