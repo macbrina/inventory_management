@@ -2,7 +2,7 @@ import { Box, Grid, Paper, Skeleton } from "@mui/material";
 
 function GridCard({ loading, loadData, children }) {
   return (
-    <Grid item xs={12} md={3} lg={3}>
+    <Grid item xs={12} md={12} lg={3}>
       <Paper
         sx={{
           p: 2,

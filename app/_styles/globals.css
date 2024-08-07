@@ -172,6 +172,36 @@ body.dark .loader-main {
   background-color: #090e10;
 }
 
+body.dark .apexcharts-text tspan {
+  fill: #fff;
+}
+
+body.dark .apexcharts-menu-item {
+  color: #090e10;
+}
+
+body.dark .apexcharts-title-text {
+  fill: #fff !important;
+}
+
+body.dark .apexcharts-legend-text {
+  color: #fff !important;
+}
+
+body.dark .css-450lmt-MuiAutocomplete-listbox {
+  background-color: rgba(9, 14, 16, 1) !important;
+}
+
+body.dark .css-1vw6mcs-MuiTypography-root,
+body.dark .css-ahj2mt-MuiTypography-root {
+  color: #fff;
+}
+
+.css-1c7zxo7-MuiPaper-root-MuiDialog-paper {
+  box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px !important;
+  background-color: rgba(9, 14, 16, 1) !important;
+}
+
 /* From Uiverse.io by alexruix */
 .loader {
   width: 112px;

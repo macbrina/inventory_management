@@ -51,7 +51,12 @@ export default function Hero({ userLoading, user }) {
               flexDirection: { xs: "column", md: "row" },
               alignSelf: "center",
               textAlign: "center",
-              fontSize: "clamp(3.5rem, 10vw, 4rem)",
+              fontSize: {
+                xs: "clamp(1.5rem, 10vw, 4rem)",
+                sm: "clamp(1.5rem, 10vw, 4rem)",
+                md: "clamp(3.5rem, 10vw, 4rem)",
+                lg: "clamp(3.5rem, 10vw, 4rem)",
+              },
             }}
           >
             Streamline Your&nbsp;
@@ -59,7 +64,12 @@ export default function Hero({ userLoading, user }) {
               component="span"
               variant="h1"
               sx={{
-                fontSize: "clamp(3rem, 10vw, 4rem)",
+                fontSize: {
+                  xs: "clamp(1.5rem, 10vw, 4rem)",
+                  sm: "clamp(1.5rem, 10vw, 4rem)",
+                  md: "clamp(3.5rem, 10vw, 4rem)",
+                  lg: "clamp(3.5rem, 10vw, 4rem)",
+                },
                 color: (theme) =>
                   theme.palette.mode === "light"
                     ? "primary.main"

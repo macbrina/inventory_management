@@ -75,7 +75,8 @@ const ViewRecipe = ({ openViewModal, setOpenViewModal, recipe }) => {
           {recipe?.youtubeUrl && (
             <Grid item xs={12} marginTop={2}>
               {!recipe.youtubeUrl ||
-              recipe.youtubeUrl == "No relevant video found" ? (
+              recipe.youtubeUrl == "No relevant video found" ||
+              recipe.youtubeUrl == "Error fetching video." ? (
                 <Typography variant="h6" gutterBottom>
                   No Video Available
                 </Typography>

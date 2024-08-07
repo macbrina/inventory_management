@@ -30,6 +30,8 @@ import TableRow from "@mui/material/TableRow";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import ProductUpdateDialog from "./ProductUpdateDialog";
+import { Visibility } from "@mui/icons-material";
+import ViewProduct from "./ViewProduct";
 
 const filters = {
   all: "All",
@@ -45,6 +47,7 @@ function ProductTable({ items, user }) {
   const { state, updateProductList, updateCategoryList } = useInventory();
   const [openDeleteModal, setOpenDeleteModal] = useState(false);
   const [openUpdateModal, setOpenUpdateModal] = useState(false);
+  const [openViewModal, setOpenViewModal] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
   const [loading, setLoading] = useState(false);
 
@@ -64,11 +67,10 @@ function ProductTable({ items, user }) {
     setPage(0);
   };
 
-  // const filteredItems = items
-  //   .filter((item) =>
-  //     item.name.toLowerCase().includes(state.productSearch.toLowerCase())
-  //   )
-  //   .sort((a, b) => new Date(b.purchaseDate) - new Date(a.purchaseDate));
+  const handleViewClick = (item) => {
+    setSelectedItem(item);
+    setOpenViewModal(true);
+  };
 
   const handleDeleteClick = (item) => {
     setSelectedItem(item);
@@ -113,7 +115,7 @@ function ProductTable({ items, user }) {
     )
     .sort((a, b) => {
       if (filter === "all") {
-        return new Date(b.purchaseDate) - new Date(a.purchaseDate);
+        return new Date(b.createdAt) - new Date(a.createdAt);
       }
       if (filter === "name") {
         return a.name.localeCompare(b.name);
@@ -188,16 +190,7 @@ function ProductTable({ items, user }) {
               <Typography variant="h6">Quantity</Typography>
             </TableCell>
             <TableCell>
-              <Typography variant="h6">Expires</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Purchased</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Location</Typography>
-            </TableCell>
-            <TableCell>
-              <Typography variant="h6">Notes</Typography>
+              <Typography variant="h6">Created Date</Typography>
             </TableCell>
             <TableCell>
               <Typography variant="h6">Action</Typography>
@@ -256,27 +249,19 @@ function ProductTable({ items, user }) {
                   </TableCell>
                   <TableCell>
                     <Typography variant="body1" sx={{ fontSize: "16px" }}>
-                      {item.expirationDate}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="body1" sx={{ fontSize: "16px" }}>
-                      {item.purchaseDate}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    <Typography variant="body1" sx={{ fontSize: "16px" }}>
-                      {item.location}
-                    </Typography>
-                  </TableCell>
-                  <TableCell>
-                    {" "}
-                    <Typography variant="body1" sx={{ fontSize: "16px" }}>
-                      {item.notes}
+                      {item.createdAt}
                     </Typography>
                   </TableCell>
                   <TableCell>
                     <Stack direction="row" spacing={1}>
+                      <Tooltip title="View">
+                        <IconButton
+                          onClick={() => handleViewClick(item)}
+                          aria-label="View"
+                        >
+                          <Visibility />
+                        </IconButton>
+                      </Tooltip>
                       <Tooltip title="Edit">
                         <IconButton onClick={() => handleUpdateClick(item)}>
                           <EditSvg />
@@ -345,6 +330,15 @@ function ProductTable({ items, user }) {
         updateProductList={updateProductList}
         updateCategoryList={updateCategoryList}
       />
+
+      {/* View Recipe Modal */}
+      {selectedItem && (
+        <ViewProduct
+          openViewModal={openViewModal}
+          setOpenViewModal={setOpenViewModal}
+          product={selectedItem}
+        />
+      )}
     </>
   );
 }

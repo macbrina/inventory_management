@@ -2,7 +2,7 @@
 
 // import * as React from "react";
 // import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
@@ -29,6 +29,15 @@ const logoStyle = {
 
 function AppAppBar({ userLoading, user }) {
   const [open, setOpen] = useState(false);
+  const [showAuth, setSHowAuth] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      setSHowAuth(false);
+    } else {
+      setSHowAuth(true);
+    }
+  }, [user]);
 
   const toggleDrawer = (newOpen) => () => {
     setOpen(newOpen);
@@ -127,7 +136,7 @@ function AppAppBar({ userLoading, user }) {
                 }}
               >
                 <ToggleColorMode />
-                {!user && !userLoading ? (
+                {(!user && !userLoading) || showAuth ? (
                   <>
                     <Link href="/login">
                       <Button
@@ -198,7 +207,7 @@ function AppAppBar({ userLoading, user }) {
                     Features
                   </MenuItem>
                   <Divider />
-                  {!user && !userLoading ? (
+                  {(!user && !userLoading) || showAuth ? (
                     <>
                       <MenuItem>
                         <Link href="/register">

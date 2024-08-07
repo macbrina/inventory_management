@@ -46,7 +46,7 @@ export default function SignIn() {
 
     try {
       await signUpSystem({ fullName, email, password });
-      toast.success("Signed in successfully!");
+      toast.success("Signed up successfully!");
 
       router.push("/account/dashboard");
     } catch (error) {
@@ -54,9 +54,7 @@ export default function SignIn() {
         if (error.code === "auth/weak-password") {
           toast.error("Password should be at least 6 characters.");
         } else {
-          toast.error(
-            "Authentication failed. Please check your credentials and try again."
-          );
+          toast.error(`Authentication failed. ${error.message}`);
         }
       } else {
         toast.error("An unexpected error occurred. Please try again.");

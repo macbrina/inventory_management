@@ -2,6 +2,7 @@ import { styled } from "@mui/material/styles";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar from "@mui/material/AppBar";
 import { v4 as uuidv4 } from "uuid";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 import { format, isValid, parse } from "date-fns";
 
@@ -38,34 +39,35 @@ export const AppBar = styled(MuiAppBar, {
 
 export const Drawer = styled(MuiDrawer, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  "& .MuiDrawer-paper": {
-    position: "relative",
-    whiteSpace: "nowrap",
-    width: drawerWidth,
-    transition: theme.transitions.create("width", {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    backdropFilter: "blur(24px)",
-    backgroundColor:
-      theme.palette.mode === "light"
-        ? "rgba(255, 255, 255, 0.4)"
-        : "rgba(9, 14, 16, 0.6)",
-    boxSizing: "border-box",
-    ...(!open && {
-      overflowX: "hidden",
+})(({ theme, open }) => {
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("md"));
+
+  return {
+    "& .MuiDrawer-paper": {
+      position: "relative",
+      whiteSpace: "nowrap",
+      width: open ? drawerWidth : isLargeScreen ? theme.spacing(7) : 0,
       transition: theme.transitions.create("width", {
         easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen,
+        duration: theme.transitions.duration.enteringScreen,
       }),
-      width: theme.spacing(7),
-      [theme.breakpoints.up("sm")]: {
-        width: theme.spacing(9),
-      },
-    }),
-  },
-}));
+      backdropFilter: "blur(24px)",
+      backgroundColor:
+        theme.palette.mode === "light"
+          ? "rgba(255, 255, 255, 0.4)"
+          : "rgba(9, 14, 16, 0.6)",
+      boxSizing: "border-box",
+      overflowX: "hidden",
+      ...(isLargeScreen && {
+        width: open ? drawerWidth : theme.spacing(7),
+        transition: theme.transitions.create("width", {
+          easing: theme.transitions.easing.sharp,
+          duration: theme.transitions.duration.leavingScreen,
+        }),
+      }),
+    },
+  };
+});
 
 export const getGreeting = () => {
   const currentHour = new Date().getHours();

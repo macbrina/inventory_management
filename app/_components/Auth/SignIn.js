@@ -48,9 +48,7 @@ export default function SignIn() {
 
       router.push("/account/dashboard");
     } catch (error) {
-      toast.error(
-        "Authentication failed. Please check your credentials and try again."
-      );
+      toast.error(`Authentication failed. ${error.message}`);
       setIsPending(false);
     }
   };

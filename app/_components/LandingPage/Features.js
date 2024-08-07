@@ -126,7 +126,7 @@ export default function Features() {
                 borderRadius: "20px",
               }}
             />
-            <Box sx={{ px: 2, pb: 2 }}>
+            <Box sx={{ px: 2, pb: 2, pt: { xs: 3, sm: 3 } }}>
               <Typography
                 color="text.primary"
                 variant="body2"

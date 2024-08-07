@@ -28,6 +28,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
 import CustomDatePicker from "../CustomDatePicker";
+import { format } from "date-fns";
 
 function ProductForm({ normalUpload, toggleNormalForm }) {
   const [open, setOpen] = useState(false);
@@ -113,6 +114,7 @@ function ProductForm({ normalUpload, toggleNormalForm }) {
         ...newItem,
         image: imageUrl,
         id: newItem.id || generateUniqueId(),
+        createdAt: format(new Date(), "yyyy-MM-dd"),
       };
 
       await addOrUpdateItemInFirestore(

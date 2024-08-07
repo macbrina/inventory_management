@@ -50,6 +50,7 @@ import { Camera } from "react-camera-pro";
 import Image from "next/image";
 import SpinnerMini from "../../SpinnerMini";
 import GeneratedContent from "./GeneratedContent";
+import { format } from "date-fns";
 
 function CameraProductForm({ cameraUpload, toggleCameraForm }) {
   const { user } = useAuth();
@@ -160,6 +161,7 @@ function CameraProductForm({ cameraUpload, toggleCameraForm }) {
         ...newItem,
         image: imageUrl,
         id: newItem.id || generateUniqueId(),
+        createdAt: format(new Date(), "yyyy-MM-dd"),
       };
 
       await addOrUpdateItemInFirestore(

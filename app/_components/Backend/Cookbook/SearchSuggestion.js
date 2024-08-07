@@ -1,15 +1,10 @@
 import { useInventory } from "@/app/_context/InventoryContext";
 import { addRecipeInFirestore, fetchUserItems } from "@/app/_lib/data-service";
-import { Search as SearchIcon } from "@mui/icons-material";
 import {
   Autocomplete,
   Button,
   CircularProgress,
   Grid,
-  IconButton,
-  List,
-  ListItem,
-  Paper,
   Skeleton,
   Stack,
   TextField,

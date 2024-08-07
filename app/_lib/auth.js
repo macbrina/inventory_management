@@ -33,7 +33,9 @@ async function signInWithProvider(provider) {
     const token = await user.getIdToken();
 
     await updateUser(user);
-    await setAuthCookie(token);
+    Cookies.set("auth_token", token, {
+      path: "/",
+    });
 
     window.location.href = "/account/dashboard";
   } catch (err) {
@@ -81,7 +83,7 @@ export async function signInSystem({ email, password, rememberMe }) {
     const token = await user.getIdToken();
 
     Cookies.set("auth_token", token, {
-      expires: rememberMe ? 7 : undefined,
+      expires: rememberMe ? 2 : undefined,
       path: "/",
     });
   } catch (error) {
@@ -106,20 +108,12 @@ export async function signUpSystem({ fullName, email, password }) {
       image_url: "/images/default_user.png",
     });
 
-    await setAuthCookie(token);
+    Cookies.set("auth_token", token, {
+      path: "/",
+    });
   } catch (error) {
     throw error;
   }
-}
-
-async function setAuthCookie(token) {
-  await fetch("/api/auth/setCookie", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ token }),
-  });
 }
 
 export async function logOut() {
@@ -127,13 +121,6 @@ export async function logOut() {
     await auth.signOut();
 
     Cookies.remove("auth_token", { path: "/" });
-
-    // await fetch("/api/auth/logout", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    // });
 
     window.location.href = "/";
   } catch (error) {

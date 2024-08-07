@@ -184,7 +184,10 @@ function RecipeTable({ items, user }) {
                   <TableCell>
                     <Stack direction="row" spacing={1}>
                       <Tooltip title="View">
-                        <IconButton onClick={() => handleViewClick(item)}>
+                        <IconButton
+                          onClick={() => handleViewClick(item)}
+                          aria-label="View"
+                        >
                           <Visibility />
                         </IconButton>
                       </Tooltip>

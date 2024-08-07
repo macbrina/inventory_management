@@ -150,37 +150,51 @@ function Account() {
             </Box>
           </Paper>
         </Grid>
-        <Grid item xs={12} md={8} lg={8}>
-          <Stack direction="row" spacing={2}>
-            <GridCard loading={loading} loadData={loadData}>
-              <GridItem
-                imgUrl="/images/box.png"
-                total={totalProducts}
-                title="Total Products"
-              />
-            </GridCard>
-            <GridCard loading={loading} loadData={loadData}>
-              <GridItem
-                imgUrl="/images/list-items.png"
-                total={totalItems}
-                title="Total Items"
-              />
-            </GridCard>
-            <GridCard loading={loading} loadData={loadData}>
-              <GridItem
-                imgUrl="/images/low.png"
-                total={lowStockAlerts}
-                title="Low Stock Alerts"
-              />
-            </GridCard>
-            <GridCard loading={loading} loadData={loadData}>
-              <GridItem
-                imgUrl="/images/expired.png"
-                total={expiredProducts}
-                title="Expired Products"
-              />
-            </GridCard>
-          </Stack>
+        <Grid
+          item
+          xs={12}
+          md={8}
+          lg={8}
+          sx={{
+            display: "flex",
+            gap: 2,
+            justifyContent: "center",
+            flexDirection: {
+              xs: "column",
+              sm: "column",
+              md: "row",
+              lg: "row",
+            },
+          }}
+        >
+          <GridCard loading={loading} loadData={loadData}>
+            <GridItem
+              imgUrl="/images/box.png"
+              total={totalProducts}
+              title="Total Products"
+            />
+          </GridCard>
+          <GridCard loading={loading} loadData={loadData}>
+            <GridItem
+              imgUrl="/images/list-items.png"
+              total={totalItems}
+              title="Total Items"
+            />
+          </GridCard>
+          <GridCard loading={loading} loadData={loadData}>
+            <GridItem
+              imgUrl="/images/low.png"
+              total={lowStockAlerts}
+              title="Low Stock Alerts"
+            />
+          </GridCard>
+          <GridCard loading={loading} loadData={loadData}>
+            <GridItem
+              imgUrl="/images/expired.png"
+              total={expiredProducts}
+              title="Expired Products"
+            />
+          </GridCard>
         </Grid>
         <Grid item xs={12}>
           <Paper

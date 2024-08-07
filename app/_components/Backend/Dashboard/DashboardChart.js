@@ -1,15 +1,35 @@
 "use client";
 
-import { generateRandomColors } from "@/app/_util/utilities";
+import { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
+import { generateRandomColors } from "@/app/_util/utilities";
 
 const Chart = dynamic(() => import("react-apexcharts"), {
   ssr: false,
 });
+
 function DashboardChart({ productsByCategory }) {
-  const categories = Object.keys(productsByCategory);
-  const data = Object.values(productsByCategory);
-  const colors = generateRandomColors(categories.length);
+  const [categories, setCategories] = useState([]);
+  const [data, setData] = useState([]);
+  const [colors, setColors] = useState([]);
+  const [isDataReady, setIsDataReady] = useState(false);
+
+  useEffect(() => {
+    if (productsByCategory && Object.keys(productsByCategory).length >= 0) {
+      const categories = Object.keys(productsByCategory);
+      const data = Object.values(productsByCategory);
+      const colors = generateRandomColors(categories.length);
+
+      setCategories(categories);
+      setData(data);
+      setColors(colors);
+      setIsDataReady(true);
+    }
+  }, [productsByCategory]);
+
+  if (!isDataReady) {
+    return <div>Loading...</div>;
+  }
 
   const options = {
     chart: {

@@ -2,6 +2,7 @@
 
 import { onAuthStateChanged } from "@/app/_lib/auth";
 import { createContext, useContext, useEffect, useState } from "react";
+import { auth } from "@/app/_firebase/config";
 import { getUserByUID } from "../_lib/data-service";
 import { usePathname, useRouter } from "next/navigation";
 import Cookies from "js-cookie";
@@ -38,16 +39,7 @@ export function AuthProvider({ children }) {
     });
 
     return () => unsubscribe();
-  }, [router]);
-
-  useEffect(() => {
-    const handle = setInterval(async () => {
-      const user = firebaseClient.auth().currentUser;
-      if (user) await user.getIdToken(true);
-    }, 10 * 60 * 1000);
-
-    return () => clearInterval(handle);
-  }, []);
+  }, [router, pathname]);
 
   return (
     <AuthContext.Provider value={{ user, loading }}>
