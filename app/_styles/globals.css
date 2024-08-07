@@ -151,12 +151,12 @@ body.dark .link:hover {
   }
 }
 
-.css-hwnex-MuiTableCell-root,
-.css-6yn4jt-MuiTableCell-root {
+.MuiTableCell-root,
+.MuiTableCell-root {
   border-bottom: 1px solid rgba(3, 102, 214, 0.3) !important;
 }
 
-.css-xu7mdg-MuiTypography-root {
+.MuiTypography-root {
   font-size: 17px !important;
 }
 
@@ -188,16 +188,16 @@ body.dark .apexcharts-legend-text {
   color: #fff !important;
 }
 
-body.dark .css-450lmt-MuiAutocomplete-listbox {
+body.dark .MuiAutocomplete-listbox {
   background-color: rgba(9, 14, 16, 1) !important;
 }
 
-body.dark .css-1vw6mcs-MuiTypography-root,
-body.dark .css-ahj2mt-MuiTypography-root {
+body.dark .MuiTypography-root,
+body.dark .MuiTypography-root {
   color: #fff;
 }
 
-.css-1c7zxo7-MuiPaper-root-MuiDialog-paper {
+body.dark .MuiDialog-paperScrollPaper {
   box-shadow: rgba(3, 102, 214, 0.3) 0px 0px 0px 3px !important;
   background-color: rgba(9, 14, 16, 1) !important;
 }
