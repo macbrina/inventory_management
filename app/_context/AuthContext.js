@@ -1,9 +1,9 @@
 "use client";
 
 import { onAuthStateChanged } from "@/app/_lib/auth";
-import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import { getUserByUID } from "../_lib/data-service";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
@@ -20,15 +20,37 @@ export function AuthProvider({ children }) {
           setUser(loggedUser.data);
         } else {
           setUser(null);
+          await fetch("/api/auth/logout", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+          router.push("/login");
         }
       } else {
         setUser(null);
-        // router.push("/login");
+        await fetch("/api/auth/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        router.push("/login");
       }
       setLoading(false);
     });
 
     return () => unsubscribe();
+  }, [router]);
+
+  useEffect(() => {
+    const handle = setInterval(async () => {
+      const user = firebaseClient.auth().currentUser;
+      if (user) await user.getIdToken(true);
+    }, 10 * 60 * 1000);
+
+    return () => clearInterval(handle);
   }, []);
 
   return (

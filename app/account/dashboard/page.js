@@ -4,17 +4,17 @@ import { useAuth } from "@/app/_context/AuthContext";
 import { Box, Skeleton, Stack, Typography } from "@mui/material";
 
 import DashboardChart from "@/app/_components/Backend/Dashboard/DashboardChart";
+import GridCard from "@/app/_components/Backend/Dashboard/GridCard";
+import GridItem from "@/app/_components/Backend/Dashboard/GridItem";
 import { firestore } from "@/app/_firebase/config";
+import { getGreeting } from "@/app/_util/utilities";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import { isBefore, parseISO } from "date-fns";
 import { collection, getDocs, query, where } from "firebase/firestore";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import GridCard from "@/app/_components/Backend/Dashboard/GridCard";
-import GridItem from "@/app/_components/Backend/Dashboard/GridItem";
-import { getGreeting } from "@/app/_util/utilities";
-import Head from "next/head";
 
 function Account() {
   const { user, loading } = useAuth();
@@ -199,7 +199,7 @@ function Account() {
               boxShadow: "rgba(3, 102, 214, 0.3) 0px 0px 0px 2px",
             }}
           >
-            {loading || loadData ? (
+            {loading || loadData || !user ? (
               <Skeleton
                 variant="rounded"
                 animation="wave"

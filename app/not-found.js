@@ -6,15 +6,15 @@ import { useRouter } from "next/navigation";
 
 const NotFound = () => {
   return (
-    <Container
-      spacing={2}
-      sx={{
+    <div
+      className="loader-main"
+      style={{
         height: "100vh",
         justifyContent: "center",
         alignItems: "center",
         textAlign: "center",
         display: "flex",
-        exDirection: "column",
+        flexDirection: "column",
       }}
     >
       <Box
@@ -42,7 +42,7 @@ const NotFound = () => {
           </Button>
         </Link>
       </Box>
-    </Container>
+    </div>
   );
 };
 

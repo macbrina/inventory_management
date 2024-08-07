@@ -4,8 +4,9 @@ import { Box, Button, Container, Grid, Typography } from "@mui/material";
 
 const Error = ({ error, reset }) => {
   return (
-    <Container
-      sx={{
+    <div
+      className="loader-main"
+      style={{
         height: "100vh",
         justifyContent: "center",
         alignItems: "center",
@@ -36,7 +37,7 @@ const Error = ({ error, reset }) => {
           Try again
         </Button>
       </Box>
-    </Container>
+    </div>
   );
 };
 

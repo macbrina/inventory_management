@@ -19,11 +19,13 @@ import { css } from "@mui/system";
 import { useState } from "react";
 import SpinnerMini from "@/app/_components/SpinnerMini";
 import { toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const AvatarDropdown = () => {
   const { user, loading } = useAuth();
   const [anchorEl, setAnchorEl] = useState(null);
   const [loggingOut, setLoggingOut] = useState(false);
+  const router = useRouter();
 
   const profilePhoto = user?.image_url?.startsWith("http")
     ? user?.image_url
@@ -43,7 +45,13 @@ const AvatarDropdown = () => {
     try {
       if (!user) {
         toast.error("User not authenticated");
-        return;
+        await fetch("/api/auth/logout", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+        });
+        router.push("/login");
       }
       setLoggingOut(true);
       await logOut();
