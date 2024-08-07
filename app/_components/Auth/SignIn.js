@@ -46,12 +46,11 @@ export default function SignIn() {
       await signInSystem({ email, password, rememberMe });
       toast.success("Signed in successfully!");
 
-      return router.push("/account/dashboard");
+      router.push("/account/dashboard");
     } catch (error) {
       toast.error(
         "Authentication failed. Please check your credentials and try again."
       );
-    } finally {
       setIsPending(false);
     }
   };

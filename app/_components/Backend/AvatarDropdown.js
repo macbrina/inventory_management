@@ -18,12 +18,14 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { css } from "@mui/system";
 import { useState } from "react";
 import SpinnerMini from "@/app/_components/SpinnerMini";
+import { toast } from "react-toastify";
 
 const AvatarDropdown = () => {
   const { user, loading } = useAuth();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [loggingOut, setLoggingOut] = useState(false);
 
-  const profilePhoto = user?.image_url.startsWith("http")
+  const profilePhoto = user?.image_url?.startsWith("http")
     ? user?.image_url
     : `${process.env.NEXT_PUBLIC_URL}${user?.image_url}`;
 
@@ -37,8 +39,20 @@ const AvatarDropdown = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    await logOut();
-    handleClose();
+
+    try {
+      if (!user) {
+        toast.error("User not authenticated");
+        return;
+      }
+      setLoggingOut(true);
+      await logOut();
+      handleClose();
+    } catch (error) {
+      toast.error("Failed to log out. Please try again later.");
+    } finally {
+      setLoggingOut(false);
+    }
   };
 
   if (loading)
@@ -77,7 +91,7 @@ const AvatarDropdown = () => {
             </Stack>
           </Box>
           <Divider />
-          <MenuItem onClick={handleSubmit}>
+          <MenuItem onClick={handleSubmit} disabled={loggingOut}>
             <ListItemIcon>
               <LogoutIcon fontSize="small" />
             </ListItemIcon>

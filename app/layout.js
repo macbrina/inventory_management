@@ -17,7 +17,7 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata = {
   title: {
     template: "%s - StockSmart",
-    default: "Welcome - Streamline Your Pantry",
+    default: "StockSmart - Streamline Your Pantry",
   },
   description:
     "Keep your pantry organized and your meals planned with ease.Streamline your kitchen inventory and never run out of essentials again.",

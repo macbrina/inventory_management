@@ -58,7 +58,7 @@ async function updateUser(user) {
       uid: user.uid,
       email: user.email,
       fullname: user.displayName || "/images/default_user.png",
-      imageUrl: user.photoURL,
+      image_url: user.photoURL,
     };
 
     await addSocialAuthUser(userData);
@@ -99,7 +99,7 @@ export async function signUpSystem({ fullName, email, password }) {
       uid: user.uid,
       fullname: fullName,
       email: email,
-      imageUrl: "/images/default_user.png",
+      image_url: "/images/default_user.png",
     });
 
     await setAuthCookie(token);

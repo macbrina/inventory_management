@@ -42,6 +42,7 @@ export async function addUser({ uid, fullname, email, imageUrl }) {
       email: email,
       image_url: imageUrl,
     });
+    return docRef.id;
   } catch (error) {
     throw error;
   }

@@ -48,7 +48,7 @@ export default function SignIn() {
       await signUpSystem({ fullName, email, password });
       toast.success("Signed in successfully!");
 
-      return router.push("/account/dashboard");
+      router.push("/account/dashboard");
     } catch (error) {
       if (error.code) {
         if (error.code === "auth/weak-password") {
@@ -60,9 +60,8 @@ export default function SignIn() {
         }
       } else {
         toast.error("An unexpected error occurred. Please try again.");
+        setIsPending(false);
       }
-    } finally {
-      setIsPending(false);
     }
   };
 
@@ -194,7 +193,6 @@ export default function SignIn() {
                   </Link>
                 </Grid>
               </Grid>
-              {/* <Copyright sx={{ mt: 5 }} /> */}
             </Box>
             <Box
               display="flex"
