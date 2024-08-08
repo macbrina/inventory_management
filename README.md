@@ -86,7 +86,7 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## License
 
-This project is licensed under the MIT [License](LICENSE).
+This project is licensed under the GNU GENERAL PUBLIC [License](LICENSE).
 
 ## Contact
 
