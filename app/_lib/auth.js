@@ -60,8 +60,8 @@ async function updateUser(user) {
     const userData = {
       uid: user.uid,
       email: user.email,
-      fullname: user.displayName || "/images/default_user.png",
-      image_url: user.photoURL,
+      fullname: user.displayName,
+      image_url: user.photoURL || "/images/default_user.png",
     };
 
     await addSocialAuthUser(userData);
